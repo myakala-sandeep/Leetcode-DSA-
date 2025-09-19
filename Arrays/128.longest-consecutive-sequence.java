@@ -5,15 +5,18 @@
  */
 
 // @lc code=start
+
+import java.util.HashSet;
+
 class Solution {
     public int longestConsecutive(int[] nums) {
          if(nums.length<2)
         {
             return nums.length==0?0:1;
         }
-        int k=0;
+        
 
-        int value =nums[k];
+         
         HashSet<Integer> set = new HashSet<>();
         for(int i=0;i<nums.length;i++)
         {
