@@ -1,15 +1,10 @@
-/*
- * @lc app=leetcode id=704 lang=java
- *
- * [704] Binary Search
- */
-
-// @lc code=start
+ 
 class Solution {
     public int search(int[] nums, int target) {
 
-        int left=0;
+        
         int right=nums.length;
+         int left=0;
         while ( left<right) {
             int mid=left+(right-left)/2;
             if(nums[mid]==target)
@@ -25,5 +20,5 @@ class Solution {
         return -1;
     }
 }
-// @lc code=end
+ 
 
