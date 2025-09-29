@@ -1,3 +1,5 @@
+package Strings;
+
 /*
  * @lc app=leetcode id=151 lang=java
  *
@@ -23,7 +25,6 @@ class Solution {
          }
       
         return sb.toString();
-        
     }
 }
 // @lc code=end
