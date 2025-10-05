@@ -5,39 +5,33 @@
  */
 
 // @lc code=start
+
+import java.math.BigInteger;
+
 class Solution {
     public int myAtoi(String s) {
 
+    s = s.trim();
+    if (s.isEmpty()) return 0;
 
-               s=s.trim();
-        if(s.length()==0)
-        return 0;
-        StringBuilder res=new StringBuilder();
-         if(!(s.charAt(0)=='-'||s.charAt(0)=='+'||s.charAt(0)>='0'&&s.charAt(0)<='9'))
-        return 0;
-        else
-        {
-        res.append.charAt(0);
-        }
-        for(int i=1;i<s.length();i++)
-        {
-            char ch = s.charAt(i);
-            if(s.charAt(0)>='0'&&s.charAt(0)<='9')
-            {
-                res.apppend()ch;
-            }
-            else
-            break;
-        }
-        if(s.charAt(0)=='-')
-        {
-            return -Interger.parseInt(res);
-        }
-        else
-        {
-           return Interger.parseInt(res);
-        }
-        
+    int sign = 1, index = 0;
+    if (s.charAt(0) == '+' || s.charAt(0) == '-') {
+        sign = (s.charAt(0) == '-') ? -1 : 1;
+        index++;
+    }
+
+    long num = 0; // long to detect overflow
+    while (index < s.length() && Character.isDigit(s.charAt(index))) {
+        num = num * 10 + (s.charAt(index) - '0');
+
+        if (sign * num > Integer.MAX_VALUE) return Integer.MAX_VALUE;
+        if (sign * num < Integer.MIN_VALUE) return Integer.MIN_VALUE;
+
+        index++;
+    }
+
+    return (int)(sign * num);
+
     }
 }
 // @lc code=end
