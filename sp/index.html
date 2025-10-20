@@ -1,0 +1,1251 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Raghavendra Dasari - Full Stack Developer</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI",
+          sans-serif;
+        line-height: 1.7;
+        color: #374151;
+        background: #fefefe;
+      }
+
+      /* Navigation */
+      nav {
+        position: fixed;
+        top: 0;
+        width: 100%;
+        background: rgba(255, 255, 255, 0.98);
+        border-bottom: 1px solid #e5e7eb;
+        z-index: 1000;
+      }
+
+      .nav-container {
+        max-width: 1100px;
+        margin: 0 auto;
+        padding: 1.2rem 2rem;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+
+      .logo {
+        font-size: 1.3rem;
+        font-weight: 600;
+        color: #111827;
+        letter-spacing: -0.02em;
+      }
+
+      .nav-links {
+        display: flex;
+        gap: 2.5rem;
+        list-style: none;
+      }
+
+      .nav-links a {
+        text-decoration: none;
+        color: #6b7280;
+        font-size: 0.95rem;
+        font-weight: 500;
+        transition: color 0.2s;
+      }
+
+      .nav-links a:hover {
+        color: #111827;
+      }
+
+      .mobile-menu {
+        display: none;
+        font-size: 1.5rem;
+        cursor: pointer;
+        color: #111827;
+      }
+
+      /* Hero Section */
+      #home {
+        min-height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 8rem 2rem 4rem;
+      }
+
+      .hero-container {
+        max-width: 1100px;
+        width: 100%;
+      }
+
+      .hero-content {
+        max-width: 700px;
+      }
+
+      .hero-content h1 {
+        font-size: 3.5rem;
+        font-weight: 700;
+        color: #111827;
+        margin-bottom: 1.5rem;
+        letter-spacing: -0.03em;
+        line-height: 1.1;
+      }
+
+      .hero-content h2 {
+        font-size: 1.5rem;
+        color: #6b7280;
+        font-weight: 400;
+        margin-bottom: 2rem;
+      }
+
+      .hero-content p {
+        font-size: 1.1rem;
+        color: #6b7280;
+        margin-bottom: 3rem;
+        line-height: 1.8;
+        max-width: 650px;
+      }
+
+      .cta-buttons {
+        display: flex;
+        gap: 1rem;
+        margin-bottom: 3rem;
+        flex-wrap: wrap;
+      }
+
+      .btn {
+        padding: 0.9rem 1.8rem;
+        border: none;
+        border-radius: 8px;
+        font-size: 0.95rem;
+        font-weight: 500;
+        cursor: pointer;
+        transition: all 0.2s;
+        text-decoration: none;
+        display: inline-block;
+      }
+
+      .btn-primary {
+        background: #111827;
+        color: white;
+      }
+
+      .btn-primary:hover {
+        background: #1f2937;
+        transform: translateY(-1px);
+      }
+
+      .btn-secondary {
+        background: white;
+        color: #111827;
+        border: 1px solid #e5e7eb;
+      }
+
+      .btn-secondary:hover {
+        border-color: #111827;
+      }
+
+      .social-links {
+        display: flex;
+        gap: 1.5rem;
+      }
+
+      .social-link {
+        color: #6b7280;
+        text-decoration: none;
+        font-size: 0.95rem;
+        transition: color 0.2s;
+      }
+
+      .social-link:hover {
+        color: #111827;
+      }
+
+      /* Section Styles */
+      section {
+        padding: 6rem 2rem;
+        max-width: 1100px;
+        margin: 0 auto;
+      }
+
+      .section-header {
+        margin-bottom: 4rem;
+      }
+
+      .section-label {
+        font-size: 0.85rem;
+        text-transform: uppercase;
+        letter-spacing: 0.1em;
+        color: #9ca3af;
+        font-weight: 600;
+        margin-bottom: 0.5rem;
+      }
+
+      .section-title {
+        font-size: 2.5rem;
+        font-weight: 700;
+        color: #111827;
+        letter-spacing: -0.02em;
+      }
+
+      /* Skills Section */
+      #skills {
+        background: #f9fafb;
+      }
+
+      .skills-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 2rem;
+      }
+
+      .skill-category h3 {
+        font-size: 1.1rem;
+        font-weight: 600;
+        color: #111827;
+        margin-bottom: 1.5rem;
+      }
+
+      .skill-list {
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+      }
+
+      .skill-item {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 0.8rem 0;
+      }
+
+      .skill-name {
+        font-size: 0.95rem;
+        color: #374151;
+      }
+
+      .skill-level {
+        font-size: 0.85rem;
+        color: #9ca3af;
+      }
+
+      /* Projects Section */
+      .projects-grid {
+        display: grid;
+        gap: 4rem;
+      }
+
+      .project {
+        border-bottom: 1px solid #e5e7eb;
+        padding-bottom: 4rem;
+      }
+
+      .project:last-child {
+        border-bottom: none;
+        padding-bottom: 0;
+      }
+
+      .project-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: start;
+        margin-bottom: 1rem;
+        flex-wrap: wrap;
+        gap: 1rem;
+      }
+
+      .project h3 {
+        font-size: 1.5rem;
+        font-weight: 600;
+        color: #111827;
+      }
+
+      .project-links {
+        display: flex;
+        gap: 1rem;
+      }
+
+      .project-link {
+        color: #6b7280;
+        text-decoration: none;
+        font-size: 0.9rem;
+        transition: color 0.2s;
+      }
+
+      .project-link:hover {
+        color: #111827;
+      }
+
+      .project-tech {
+        font-size: 0.9rem;
+        color: #9ca3af;
+        margin-bottom: 1rem;
+      }
+
+      .project-description {
+        color: #6b7280;
+        line-height: 1.8;
+        margin-bottom: 1rem;
+      }
+
+      .project-features {
+        font-size: 0.9rem;
+        color: #6b7280;
+        font-style: italic;
+      }
+
+      /* Experience Section */
+      #experience {
+        background: #f9fafb;
+      }
+
+      .experience-item {
+        margin-bottom: 3rem;
+        padding-bottom: 3rem;
+        border-bottom: 1px solid #e5e7eb;
+      }
+
+      .experience-item:last-child {
+        border-bottom: none;
+      }
+
+      .experience-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: start;
+        margin-bottom: 1rem;
+        flex-wrap: wrap;
+      }
+
+      .experience-title {
+        font-size: 1.3rem;
+        font-weight: 600;
+        color: #111827;
+      }
+
+      .experience-date {
+        font-size: 0.9rem;
+        color: #9ca3af;
+      }
+
+      .experience-company {
+        font-size: 1rem;
+        color: #6b7280;
+        margin-bottom: 1rem;
+      }
+
+      .experience-description {
+        color: #6b7280;
+        line-height: 1.8;
+      }
+
+      /* About Section */
+      .about-content {
+        max-width: 700px;
+      }
+
+      .about-content p {
+        font-size: 1.05rem;
+        color: #6b7280;
+        margin-bottom: 1.5rem;
+        line-height: 1.8;
+      }
+
+      .about-subsection {
+        margin-top: 3rem;
+      }
+
+      .about-subsection h3 {
+        font-size: 1.3rem;
+        font-weight: 600;
+        color: #111827;
+        margin-bottom: 1.5rem;
+      }
+
+      .education-item {
+        margin-bottom: 2rem;
+      }
+
+      .education-title {
+        font-size: 1.1rem;
+        font-weight: 600;
+        color: #111827;
+      }
+
+      .education-details {
+        font-size: 0.95rem;
+        color: #6b7280;
+        margin-top: 0.3rem;
+      }
+
+      .interests-list {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.8rem;
+      }
+
+      .interest-tag {
+        padding: 0.5rem 1rem;
+        background: white;
+        border: 1px solid #e5e7eb;
+        border-radius: 20px;
+        font-size: 0.9rem;
+        color: #374151;
+      }
+
+      /* Contact Section */
+      #contact {
+        background: #f9fafb;
+      }
+
+      .contact-content {
+        max-width: 700px;
+      }
+
+      .contact-form {
+        display: flex;
+        flex-direction: column;
+        gap: 1.5rem;
+        margin-bottom: 3rem;
+      }
+
+      .form-group label {
+        display: block;
+        margin-bottom: 0.5rem;
+        font-size: 0.9rem;
+        font-weight: 500;
+        color: #374151;
+      }
+
+      .form-group input,
+      .form-group textarea {
+        width: 100%;
+        padding: 0.9rem;
+        border: 1px solid #e5e7eb;
+        border-radius: 8px;
+        font-size: 0.95rem;
+        font-family: inherit;
+        transition: border-color 0.2s;
+        background: white;
+      }
+
+      .form-group input:focus,
+      .form-group textarea:focus {
+        outline: none;
+        border-color: #111827;
+      }
+
+      .form-group textarea {
+        resize: vertical;
+        min-height: 120px;
+      }
+
+      .contact-info {
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+      }
+
+      .contact-item {
+        color: #6b7280;
+        text-decoration: none;
+        font-size: 0.95rem;
+        transition: color 0.2s;
+      }
+
+      .contact-item:hover {
+        color: #111827;
+      }
+
+      .resume-downloads {
+        margin-top: 2rem;
+        padding-top: 2rem;
+        border-top: 1px solid #e5e7eb;
+      }
+
+      .resume-downloads h4 {
+        font-size: 1rem;
+        font-weight: 600;
+        color: #111827;
+        margin-bottom: 1rem;
+      }
+
+      .resume-links {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 1rem;
+      }
+
+      .resume-link {
+        padding: 0.6rem 1.2rem;
+        background: white;
+        border: 1px solid #e5e7eb;
+        border-radius: 6px;
+        color: #374151;
+        text-decoration: none;
+        font-size: 0.9rem;
+        transition: all 0.2s;
+      }
+
+      .resume-link:hover {
+        border-color: #111827;
+      }
+
+      /* Footer */
+      footer {
+        padding: 3rem 2rem;
+        text-align: center;
+        border-top: 1px solid #e5e7eb;
+      }
+
+      .footer-text {
+        color: #9ca3af;
+        font-size: 0.9rem;
+      }
+
+      /* Success Message */
+      .success-message {
+        background: #ecfdf5;
+        border: 1px solid #a7f3d0;
+        color: #065f46;
+        padding: 1rem;
+        border-radius: 8px;
+        margin-bottom: 1.5rem;
+        display: none;
+      }
+
+      /* Responsive */
+      @media (max-width: 768px) {
+        .nav-links {
+          display: none;
+        }
+
+        .mobile-menu {
+          display: block;
+        }
+
+        .hero-content h1 {
+          font-size: 2.5rem;
+        }
+
+        .section-title {
+          font-size: 2rem;
+        }
+
+        .skills-grid {
+          grid-template-columns: 1fr;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Navigation -->
+    <nav>
+      <div class="nav-container">
+        <div class="logo">Raghavendra Dasari</div>
+        <ul class="nav-links">
+          <li><a href="#home">Home</a></li>
+          <li><a href="#skills">Skills</a></li>
+          <li><a href="#experience">Experience</a></li>
+          <li><a href="#projects">Projects</a></li>
+          <li><a href="#about">About</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+        <div class="mobile-menu">☰</div>
+      </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home">
+      <div class="hero-container">
+        <div class="hero-content">
+          <h1>
+            Full Stack Developer focused on building elegant digital experiences
+          </h1>
+          <h2>Raghavendra Dasari</h2>
+          <p>
+            I'm a Java Full Stack Developer with a passion for creating
+            responsive, high-performing web applications. I specialize in React,
+            JavaScript, and modern CSS frameworks on the frontend, complemented
+            by Java-based backend solutions using JDBC, Hibernate, and Spring.
+          </p>
+          <div class="cta-buttons">
+            <a href="#contact" class="btn btn-primary">Get in touch</a>
+            <a href="#projects" class="btn btn-secondary">View work</a>
+          </div>
+          <div class="social-links">
+            <a href="mailto:raghu123336@gmail.com" class="social-link">Email</a>
+            <a
+              href="https://www.linkedin.com/in/raghavendra-dasari/"
+              class="social-link"
+              >LinkedIn</a
+            >
+            <a href="https://github.com/raghu0209" class="social-link"
+              >GitHub</a
+            >
+            <!-- <a href="#" class="social-link">Twitter</a> -->
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills">
+      <div class="section-header">
+        <div class="section-label">What I Do</div>
+        <h2 class="section-title">Skills & Technologies</h2>
+      </div>
+      <div class="skills-grid">
+        <div class="skill-category">
+          <h3>Frontend Development</h3>
+          <div class="skill-list">
+            <div class="skill-item">
+              <span class="skill-name">HTML5 & Semantic Markup</span>
+              <span class="skill-level">Expert</span>
+            </div>
+            <div class="skill-item">
+              <span class="skill-name">CSS3 & Responsive Design</span>
+              <span class="skill-level">Expert</span>
+            </div>
+            <div class="skill-item">
+              <span class="skill-name">JavaScript (ES6+)</span>
+              <span class="skill-level">Advanced</span>
+            </div>
+            <div class="skill-item">
+              <span class="skill-name">React.js & Hooks</span>
+              <span class="skill-level">Advanced</span>
+            </div>
+            <div class="skill-item">
+              <span class="skill-name">Tailwind CSS</span>
+              <span class="skill-level">Expert</span>
+            </div>
+            <div class="skill-item">
+              <span class="skill-name">Bootstrap</span>
+              <span class="skill-level">Advanced</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="skill-category">
+          <h3>Backend Development</h3>
+          <div class="skill-list">
+            <div class="skill-item">
+              <span class="skill-name">Core Java</span>
+              <span class="skill-level">Advanced</span>
+            </div>
+            <div class="skill-item">
+              <span class="skill-name">JDBC</span>
+              <span class="skill-level">Advanced</span>
+            </div>
+            <div class="skill-item">
+              <span class="skill-name">Hibernate ORM</span>
+              <span class="skill-level">Intermediate</span>
+            </div>
+            <div class="skill-item">
+              <span class="skill-name">Spring Core</span>
+              <span class="skill-level">Intermediate</span>
+            </div>
+            <!-- <div class="skill-item">
+                        <span class="skill-name">RESTful APIs</span>
+                        <span class="skill-level">Advanced</span>
+                    </div> -->
+          </div>
+        </div>
+
+        <div class="skill-category">
+          <h3>Database & Tools</h3>
+          <div class="skill-list">
+            <div class="skill-item">
+              <span class="skill-name">SQL & Database Design</span>
+              <span class="skill-level">Advanced</span>
+            </div>
+            <div class="skill-item">
+              <span class="skill-name">Query Optimization</span>
+              <span class="skill-level">Intermediate</span>
+            </div>
+            <div class="skill-item">
+              <span class="skill-name">Git & GitHub</span>
+              <span class="skill-level">Advanced</span>
+            </div>
+            <div class="skill-item">
+              <span class="skill-name">Firebase</span>
+              <span class="skill-level">Intermediate</span>
+            </div>
+            <div class="skill-item">
+              <span class="skill-name">VS Code</span>
+              <span class="skill-level">Expert</span>
+            </div>
+            <!-- <div class="skill-item">
+                        <span class="skill-name">Postman</span>
+                        <span class="skill-level">Advanced</span>
+                    </div> -->
+          </div>
+        </div>
+
+        <div class="skill-category">
+          <h3>Additional Skills</h3>
+          <div class="skill-list">
+            <div class="skill-item">
+              <span class="skill-name">Python Programming</span>
+              <span class="skill-level">Intermediate</span>
+            </div>
+            <div class="skill-item">
+              <span class="skill-name">WordPress Development</span>
+              <span class="skill-level">Intermediate</span>
+            </div>
+            <div class="skill-item">
+              <span class="skill-name">Problem Solving</span>
+              <span class="skill-level">Advanced</span>
+            </div>
+            <div class="skill-item">
+              <span class="skill-name">Data Structures</span>
+              <span class="skill-level">Intermediate</span>
+            </div>
+            <div class="skill-item">
+              <span class="skill-name">Agile Methodology</span>
+              <span class="skill-level">Familiar</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Experience Section -->
+    <section id="experience">
+      <div class="section-header">
+        <div class="section-label">Background</div>
+        <h2 class="section-title">Experience & Learning Path</h2>
+      </div>
+      <div class="experience-item">
+        <div class="experience-header">
+          <div>
+            <div class="experience-title">Java Full Stack Intern</div>
+            <div class="experience-company">
+              Jspiders
+            </div>
+          </div>
+          <div class="experience-date">2025 - Present</div>
+        </div>
+        <div class="experience-description">
+          Embarked on a learning journey to master Java full-stack
+          development. Built multiple real-world projects to solidify
+          understanding of frontend frameworks, backend architectures, and
+          database management. Focused on writing clean, maintainable code and
+          following industry best practices. Continuously learning new
+          technologies and staying updated with modern development trends.
+        </div>
+      </div>
+
+      <div class="experience-item">
+        <div class="experience-header">
+          <div>
+            <div class="experience-title">React Js Internship</div>
+            <div class="experience-company">DevGnan</div>
+          </div>
+          <div class="experience-date">2025 - 2025</div>
+        </div>
+        <div class="experience-description">
+          Completed a focused internship program specializing in React.js
+          development. Gained hands-on experience building dynamic web
+          applications using React components, state management, and routing.
+          Collaborated with a team of developers to implement features,
+          optimize performance, and ensure code quality. Developed a strong
+          foundation in modern frontend development practices and tools.
+        </div>
+      </div>
+
+      <div class="experience-item">
+        <div class="experience-header">
+          <div>
+            <div class="experience-title">
+              100 Days of Python bootcamp
+            </div>
+            <div class="experience-company">Udemy & Self-Study</div>
+          </div>
+          <div class="experience-date">2022 - 2023</div>
+        </div>
+        <div class="experience-description">
+          Completed a comprehensive 100-day Python bootcamp to build a solid
+          foundation in programming. Covered core concepts such as data types,
+          control structures, functions, and object-oriented programming.
+          Worked on practical projects to apply learned skills in real-world
+          scenarios. Developed problem-solving abilities and gained confidence
+          in writing efficient Python code.
+        </div>
+      </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects">
+      <div class="section-header">
+        <div class="section-label">Portfolio</div>
+        <h2 class="section-title">Selected Projects</h2>
+      </div>
+      <div class="projects-grid">
+        <div class="project">
+          <div class="project-header">
+            <h3>Myntra Clone - E-Commerce Platform</h3>
+            <div class="project-links">
+              <a
+                href="https://github.com/raghu0209/myntra-clone"
+                class="project-link"
+                >View Code →</a
+              >
+              <a
+                href="https://myntra-clone-ten-opal.vercel.app/"
+                class="project-link"
+                >Live Demo →</a
+              >
+            </div>
+          </div>
+          <p class="project-tech">
+            React.js · Tailwind CSS · Firebase Authentication · Context API
+          </p>
+          <p class="project-description">
+            A fully functional e-commerce website inspired by Myntra, featuring
+            product browsing, advanced filtering, shopping cart, and wishlist
+            functionality. Implemented user authentication using Firebase,
+            allowing users to maintain personalized carts and order history
+            across sessions. The application showcases responsive design
+            principles and reusable React components for optimal performance and
+            maintainability.
+          </p>
+          <p class="project-features">
+            Highlights: Real-time cart updates, persistent user sessions,
+            category-based filtering, mobile-responsive design
+          </p>
+        </div>
+
+        <div class="project">
+          <div class="project-header">
+            <h3>TaskMaster - Task Management App with Authentication</h3>
+            <div class="project-links">
+              <a
+                href="https://github.com/raghu0209/todo-auth-app/"
+                class="project-link"
+                >View Code →</a
+              >
+              <a
+                href="https://raghu0209.github.io/todo-auth-app/"
+                class="project-link"
+                >Live Demo →</a
+              >
+            </div>
+          </div>
+          <p class="project-tech">
+            Html5, CSS3, JavaScript(Es6+) · Local Storage Authentication · Local
+            Storage Database
+          </p>
+          <p class="project-description">
+            A full-featured task management web application that allows users to
+            create, update, and delete tasks with a personalized dashboard after
+            secure login. Integrated Localstorage Authentication for
+            user-specific task data, ensuring privacy and real-time
+            synchronization across devices.
+          </p>
+
+          <p class="project-features">
+            Highlights: Secure authentication system, user-specific task
+            storage, responsive design, CRUD operations, real-time database sync
+          </p>
+        </div>
+
+        <div class="project">
+          <div class="project-header">
+            <h3>Typing Speed Game</h3>
+            <div class="project-links">
+              <a
+                href="https://github.com/raghu0209/typing-speed-game"
+                class="project-link"
+                >View Code →</a
+              >
+              <a
+                href="https://raghu0209.github.io/typing-speed-game/"
+                class="project-link"
+                >Live Demo →</a
+              >
+            </div>
+          </div>
+          <p class="project-tech">HTML · CSS · JavaScript</p>
+          <p class="project-description">
+            An interactive web-based typing speed game that measures a user's
+            typing speed and accuracy in real time. The game dynamically
+            displays random sentences for users to type within a time limit and
+            calculates words per minute (WPM) and accuracy percentage. Designed
+            with a clean and responsive layout for both desktop and mobile
+            devices.
+          </p>
+          <p class="project-features">
+            Highlights: Used GeekJokes API to load the data, Real-time typing
+            speed tracking, accuracy calculation, responsive UI, timer-based
+            gameplay, and dynamic text generation
+          </p>
+        </div>
+
+        <div class="project">
+          <div class="project-header">
+            <h3>Personal Portfolio Website</h3>
+            <div class="project-links">
+              <a href="#" class="project-link">View Code →</a>
+              <a href="#" class="project-link">You're here! →</a>
+            </div>
+          </div>
+          <p class="project-tech">
+            HTML5 · CSS3 · Vanilla JavaScript · Responsive Design
+          </p>
+          <p class="project-description">
+            A minimalist, performance-focused portfolio website showcasing my
+            work and skills as a full-stack developer. Built with semantic HTML,
+            modern CSS techniques, and vanilla JavaScript for optimal loading
+            speed and accessibility. Features smooth scrolling, form validation,
+            and a mobile-first responsive design that works seamlessly across
+            all devices.
+          </p>
+          <p class="project-features">
+            Highlights: Zero external dependencies, perfect lighthouse scores,
+            accessible design, clean minimalist aesthetic
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about">
+      <div class="section-header">
+        <div class="section-label">Get to Know Me</div>
+        <h2 class="section-title">About</h2>
+      </div>
+      <div class="about-content">
+        <p>
+          Hi, I'm Raghavendra Dasari, a passionate Full Stack Developer based in
+          India. From a young age, I've been fascinated by how things work,
+          whether it's understanding the mechanics of gadgets,
+          reverse-engineering websites, or exploring the logic behind games and
+          applications.
+        </p>
+        <p>
+          This curiosity naturally led me into the world of programming. I
+          started with HTML and CSS, creating simple web pages, and quickly
+          realized the creative potential of code. As I progressed to JavaScript
+          and React, I discovered the power of building interactive, dynamic
+          user experiences. The backend fascinated me equally, and I dove into
+          Core Java, learning about data persistence with JDBC and Hibernate,
+          and how to architect scalable systems.
+        </p>
+        <p>
+          What drives me is the satisfaction of turning ideas into functional,
+          elegant digital products. I believe in writing code that's not just
+          functional but also clean, maintainable, and well-documented. I'm
+          constantly learning, whether it's a new framework, technology or the
+          things around me.
+        </p>
+        <p>
+          Beyond coding, I'm deeply interested in financial markets and stock
+          trading. This interest has taught me invaluable skills in data
+          analysis, pattern recognition, risk management, and disciplined
+          decision-making, all of which translate remarkably well into software
+          development. The patience required to analyze market trends mirrors
+          the patience needed to debug complex code or architect robust systems.
+        </p>
+
+        <div class="about-subsection">
+          <h3>Education</h3>
+          <div class="education-item">
+            <div class="education-title">
+              B.Tech in Computer Science Engineering
+            </div>
+            <div class="education-details">
+              Malla Reddy Insitute Of Engineering And Technology • 2025
+            </div>
+          </div>
+          <div class="education-item">
+            <div class="education-title">
+              Intermediate in Mathematics, Physics and Chemistry
+            </div>
+            <div class="education-details">
+              Sri Kottam Manikyamma Junior College • 2021
+            </div>
+          </div>
+          <div class="education-item">
+            <div class="education-title">Schooling</div>
+            <div class="education-details">St. John's High School • 2019</div>
+          </div>
+        </div>
+
+        <div class="about-subsection">
+          <h3>Interests & Hobbies</h3>
+          <div class="interests-list">
+            <span class="interest-tag">Coding</span>
+            <span class="interest-tag">Stock Market Trading</span>
+            <span class="interest-tag">Fitness & Gym</span>
+            <span class="interest-tag">Problem Solving</span>
+            <span class="interest-tag">Financial Planning</span>
+          </div>
+        </div>
+
+        <div class="about-subsection">
+          <h3>What I Value</h3>
+          <p>
+            <strong>Continuous Learning:</strong> Technology evolves rapidly,
+            and I believe in staying current. I dedicate time each week to
+            learning new tools, reading documentation, and experimenting with
+            emerging technologies.
+          </p>
+          <p>
+            <strong>Clean Code:</strong> I'm a firm believer in writing code
+            that others can read and maintain. Meaningful variable names, proper
+            commenting, and following established design patterns are
+            non-negotiable for me.
+          </p>
+          <p>
+            <strong>User-Centric Design:</strong> Every line of code I write
+            serves a purpose, to create better experiences for users. I
+            prioritize accessibility, performance, and intuitive interfaces in
+            all my projects.
+          </p>
+          <p>
+            <strong>Discipline & Patience:</strong> Whether debugging a complex
+            issue or learning a new technology, I approach challenges with
+            patience and systematic thinking. My experience in trading has
+            reinforced the importance of staying calm under pressure.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact">
+      <div class="section-header">
+        <div class="section-label">Let's Connect</div>
+        <h2 class="section-title">Get In Touch</h2>
+      </div>
+      <div class="contact-content">
+        <p style="margin-bottom: 2rem; color: #6b7280; font-size: 1.05rem">
+          I'm currently open to full-time opportunities, freelance projects, and
+          collaborations. Whether you have a question, want to discuss a
+          project, or just want to say hi, feel free to reach out!
+        </p>
+
+        <div id="successMessage" class="success-message">
+          ✓ Thank you for your message! I'll get back to you soon.
+        </div>
+
+        <form action="">
+          <div class="contact-form">
+            <div class="form-group">
+              <label for="name">Name</label>
+              <input
+                type="text"
+                id="name"
+                name="name"
+                placeholder="Your name"
+                required
+              />
+            </div>
+            <div class="form-group">
+              <label for="email">Email</label>
+              <input
+                type="email"
+                id="email"
+                name="email"
+                placeholder="your.email@example.com"
+                required
+              />
+            </div>
+            <div class="form-group">
+              <label for="message">Message</label>
+              <textarea
+                id="message"
+                name="message"
+                placeholder="Tell me about your project or just say hi..."
+                required
+              ></textarea>
+            </div>
+            <button
+              type="submit"
+              class="btn btn-primary"
+              onclick="handleSubmit(event)"
+            >
+              Send Message
+            </button>
+          </div>
+        </form>
+
+        <div class="contact-info">
+          <h4
+            style="
+              font-size: 1rem;
+              font-weight: 600;
+              color: #111827;
+              margin-bottom: 1rem;
+            "
+          >
+            Other Ways to Reach Me
+          </h4>
+          <a href="mailto:your.email@example.com" class="contact-item"
+            >→ raghu123336@gmail.com</a
+          >
+          <a href="https://www.linkedin.com/in/raghavendra-dasari/" class="contact-item">→ LinkedIn Profile</a>
+          <a href="https://github.com/raghu0209" class="contact-item">→ GitHub Profile</a>
+        </div>
+
+        <div class="resume-downloads">
+          <h4>Download My Resume (As of now I've only frontend resume and full-stack resume, soon going to upload all the resumes)</h4>
+          <div class="resume-links">
+            <a href="https://drive.google.com/file/d/1LD4YUvpb8nWXNVH71Pl5tClFNEMwnSVx/view?usp=sharing" class="resume-link">Frontend Resume (PDF)</a>
+            <a href="#" class="resume-link">Backend Resume (PDF)</a>
+            <a href="#" class="resume-link">Database Resume (PDF)</a>
+            <a href="https://drive.google.com/file/d/1i7HY5m_9IZgPh0xCzWOEQ1Lc81nfNgWz/view?usp=sharing" class="resume-link">Full Stack Resume (PDF)</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+      <p class="footer-text">
+        © 2025 Raghavendra Dasari. Designed & built with attention to detail.
+      </p>
+      <p class="footer-text" style="margin-top: 0.5rem">All rights reserved.</p>
+    </footer>
+
+    <script>
+      // Smooth scrolling for navigation links
+      document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+        anchor.addEventListener("click", function (e) {
+          e.preventDefault();
+          const target = document.querySelector(this.getAttribute("href"));
+          if (target) {
+            target.scrollIntoView({
+              behavior: "smooth",
+              block: "start",
+            });
+          }
+        });
+      });
+
+      // Form submission handler
+      function handleSubmit(event) {
+        event.preventDefault();
+
+        // Get form values
+        const name = document.getElementById("name").value;
+        const email = document.getElementById("email").value;
+        const message = document.getElementById("message").value;
+
+         // Encode the content for mailto link
+          const subject = encodeURIComponent("New Message from " + name);
+          const body = encodeURIComponent(
+            `Name: ${name}\nEmail: ${email}\n\nMessage:\n${message}`
+          );
+
+          // Open default mail client
+          window.location.href = `mailto:raghu123336@gmail.com?subject=${subject}&body=${body}`;
+
+        // Simple validation
+        if (name && email && message) {
+          // Show success message
+          document.getElementById("successMessage").style.display = "block";
+
+         
+
+          // Clear form
+          document.getElementById("name").value = "";
+          document.getElementById("email").value = "";
+          document.getElementById("message").value = "";
+
+          // Hide success message after 5 seconds
+          setTimeout(() => {
+            document.getElementById("successMessage").style.display = "none";
+          }, 5000);
+
+          // Here you would typically send the data to a server
+          console.log("Form submitted:", { name, email, message });
+        }
+      }
+
+      // Mobile menu toggle
+      document
+        .querySelector(".mobile-menu")
+        .addEventListener("click", function () {
+          const navLinks = document.querySelector(".nav-links");
+          if (navLinks.style.display === "flex") {
+            navLinks.style.display = "none";
+          } else {
+            navLinks.style.display = "flex";
+            navLinks.style.flexDirection = "column";
+            navLinks.style.position = "absolute";
+            navLinks.style.top = "100%";
+            navLinks.style.left = "0";
+            navLinks.style.right = "0";
+            navLinks.style.background = "white";
+            navLinks.style.padding = "1rem";
+            navLinks.style.boxShadow = "0 4px 6px rgba(0,0,0,0.1)";
+          }
+        });
+
+      // Highlight active section in navigation
+      window.addEventListener("scroll", () => {
+        const sections = document.querySelectorAll("section");
+        const navLinks = document.querySelectorAll(".nav-links a");
+
+        let current = "";
+        sections.forEach((section) => {
+          const sectionTop = section.offsetTop;
+          const sectionHeight = section.clientHeight;
+          if (pageYOffset >= sectionTop - 200) {
+            current = section.getAttribute("id");
+          }
+        });
+
+        navLinks.forEach((link) => {
+          link.style.color = "#6b7280";
+          if (link.getAttribute("href") === `#${current}`) {
+            link.style.color = "#111827";
+          }
+        });
+      });
+
+      // Add animation on scroll
+      const observerOptions = {
+        threshold: 0.1,
+        rootMargin: "0px 0px -100px 0px",
+      };
+
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.style.opacity = "1";
+            entry.target.style.transform = "translateY(0)";
+          }
+        });
+      }, observerOptions);
+
+      // Observe all project cards and skill categories
+      document
+        .querySelectorAll(".project, .skill-category, .experience-item")
+        .forEach((el) => {
+          el.style.opacity = "0";
+          el.style.transform = "translateY(20px)";
+          el.style.transition = "opacity 0.6s ease, transform 0.6s ease";
+          observer.observe(el);
+        });
+
+      // Add subtle parallax effect to hero section
+      // window.addEventListener('scroll', () => {
+      //     const scrolled = window.pageYOffset;
+      //     const hero = document.querySelector('#home .hero-content');
+      //     if (hero && scrolled < window.innerHeight) {
+      //         hero.style.transform = `translateY(${scrolled * 0.3}px)`;
+      //         hero.style.opacity = 1 - (scrolled / window.innerHeight) * 0.5;
+      //     }
+      // });
+    </script>
+  </body>
+</html>
